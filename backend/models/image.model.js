@@ -1,16 +1,10 @@
 const mongoose = require('mongoose');
 
-const Schema = new mongoose.Schema;
+const Schema =  mongoose.Schema;
 
 const imageSchema = new Schema({
-    image: {data: Buffer, contentType: String},
-    alt: {
-        type: String,
-        required: true,
-        trim: true,
-        minlength: 3,
-        maxlength: 20
-    }
+    imageUrl : { type: String, required: true },
+    imageAlt : { type: String, required: true }
     }, { timestamps: true });
 
 const Image = mongoose.model('Image', imageSchema);

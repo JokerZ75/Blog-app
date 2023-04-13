@@ -18,12 +18,14 @@ router.route('/:username').get((req, res) => {
     User.findOne({username: req.params.username})
         .then((users) => res.json({
             username: users.username,
-            email: users.email
+            email: users.email,
+            profileImage: users.profileImage
         }))
         .catch((err) => res.status(400).json('Error: ' + err));
 });
 
 router.route('/create').post(async (req, res) => {
+
     const username = req.body.username;
     const password = req.body.password;
     const email = await validation.validateEmail(req.body.email).then((response) => { if (response) { return req.body.email } else { return null } });
@@ -63,5 +65,6 @@ router.route('/delete/:id').delete((req, res) => {
         .then(() => res.json('User deleted!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
 
 module.exports = router;
