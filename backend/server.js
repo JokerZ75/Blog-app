@@ -17,6 +17,16 @@ connection.once('open', () => {
     console.log("Mongodb conntection established successfully");
 });
 
+const blogRouter = require('./routes/blogs');
+const userRouter = require('./routes/users');
+const subjectRouter = require('./routes/subjects');
+const imageRouter = require('./routes/images');
+
+// app.use('/blogs', blogRouter);
+app.use('/users', userRouter);
+app.use('/images', imageRouter);
+// app.use('/subjects', subjectRouter);
+
 app.listen(port, () => {
     console.log(`Staring on port: ${port}`);
 });
