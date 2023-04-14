@@ -26,22 +26,31 @@ router.route('/byid/:id').get((req, res) => {
 });
 
 router.route('/create').post((req, res) => {
+    if (Image.find({imageUrl: req.body.imageUrl}).length > 0) {
+        Image.find({imageUrl: req.body.imageUrl})
+            .then((image) => {
+                res.json(image._id + ': Image already exists!')
+            })
+            .catch(err => res.status(400).json('Error: ' + err));
+    }
+    else{
+        const data = req.body.imageData;
+        const imageUrl = req.body.imageUrl;
+        const filePath = `public/images/${imageUrl}`;
+        const blob = new Buffer.from(data, 'base64');
+        fs.writeFileSync(filePath, blob);
+        const imageAlt = req.body.imageAlt;
+    
+        const newImage = new Image({
+            imageUrl,
+            imageAlt,
+        });
+    
+        newImage.save()
+            .then(() => res.json( newImage._id  + ': Image added!'))
+            .catch(err => res.status(400).json('Error: ' + err));
+    }
 
-    const data = req.body.imageData;
-    const imageUrl = req.body.imageUrl;
-    const filePath = `public/images/${imageUrl}`;
-    const blob = new Buffer.from(data, 'base64');
-    fs.writeFileSync(filePath, blob);
-    const imageAlt = req.body.imageAlt;
-
-    const newImage = new Image({
-        imageUrl,
-        imageAlt,
-    });
-
-    newImage.save()
-        .then(() => res.json('Image added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/delete/:id').delete((req, res) => {
