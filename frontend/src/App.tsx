@@ -4,17 +4,6 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [theme, setTheme] = useState("light");
-  useEffect(() => {
-    localStorage.theme = theme;
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
   return (
     <>
       <BrowserRouter>
