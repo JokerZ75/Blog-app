@@ -4,6 +4,7 @@ const fs = require('fs');
 let Blog = require('../models/blog.model');
 let Image = require('../models/image.model');
 let User = require('../models/user.model');
+let Subject = require('../models/subject.model');
 
 router.route('/').get((req, res) => {
     Blog.find()
@@ -55,12 +56,28 @@ router.route('/delete/:id').delete((req, res) => {
                         const imageUrl = image.imageUrl;
                         const imagePath = `public/images/${imageUrl}`
                         fs.unlinkSync(imagePath);
-                        res.json('Blog deleted!');
+                        Subject.findById(blog.subject)
+                            .then((subject) => {
+                                const subjectIndex = subject.blogs.indexOf(blog._id);
+                                subject.blogs.splice(subjectIndex, 1);
+                                subject.save()
+                                    .then(() => res.json('Blog deleted!'))
+                                    .catch((err) => res.status(400).json('Error: ' + err));
+                            })
+                            .catch((err) => res.status(400).json('Error: ' + err));
                     })
                     .catch((err) => res.status(400).json('Error: ' + err));
             }
             else{
-                res.json('Blog deleted!');
+                Subject.findById(blog.subject)
+                .then((subject) => {
+                    const subjectIndex = subject.blogs.indexOf(blog._id);
+                    subject.blogs.splice(subjectIndex, 1);
+                    subject.save()
+                        .then(() => res.json('Blog deleted!'))
+                        .catch((err) => res.status(400).json('Error: ' + err));
+                })
+                .catch((err) => res.status(400).json('Error: ' + err));
             }
         })
         .catch((err) => res.status(400).json('Error: ' + err));
