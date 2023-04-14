@@ -1,0 +1,16 @@
+{
+  "description": "",
+  "scripts": {
+    "start": "node .",
+    "build": "babel src --out-dir dist",
+    "build:watch": "npm run build -- --watch"
+  },
+  "main": "dist/index.js",
+  "keywords": [
+    "create-babel"
+  ],
+  "files": [
+    "dist"
+  ],
+  "name": ".__"
+}
