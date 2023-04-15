@@ -1,6 +1,6 @@
 import Layout from "../layouts/layout";
 
-const blogs = () => {
+const search = () => {
   return (
     <Layout>
       <h1>Blogs</h1>
@@ -8,4 +8,4 @@ const blogs = () => {
   );
 };
 
-export default blogs;
+export default search;
