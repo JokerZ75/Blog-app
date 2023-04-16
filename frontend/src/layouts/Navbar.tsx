@@ -44,7 +44,7 @@ const NavBar = () => {
 
     return (
         <>
-        <nav className="w-screen h-32 fixed bottom-0 md:relative bg-slate-300 text-black flex justify-evenly dark:bg-slate-700 dark:text-white transition-colors duration-500 ">
+        <nav className="w-screen h-32 z-10 fixed bottom-0 md:relative bg-slate-300 text-black flex justify-evenly dark:bg-slate-700 dark:text-white transition-colors duration-500 ">
             <LinkElement path="/" element={<FontAwesomeIcon className="w-2/6 h-2/6 mt-10" icon={faHouse} />} />
             <LinkElement path="/search" element={<FontAwesomeIcon className="w-2/6 h-2/6 mt-10" icon={faMagnifyingGlass} />} />
             <LinkElement path="/profile" element={<FontAwesomeIcon className="w-2/6 h-2/6 mt-10" icon={faUser} />} />
