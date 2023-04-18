@@ -15,7 +15,6 @@ const followedUsers = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              // Set Users adding the image to its user json
               setUsers((users: any) => [
                 ...users,
                 { ...user, profileImage: data.base64Data },
@@ -25,6 +24,7 @@ const followedUsers = () => {
       })
       .catch((err) => {
         if (err.name === "AbortError") {
+            console.log("Aborted");
         } else {
           throw err;
         }
@@ -34,14 +34,10 @@ const followedUsers = () => {
     };
   }, []);
 
-  useMemo(() => {
-
-  }, [])
-
   return (
     <div className="bg-slate-300 dark:bg-slate-800 m-5 rounded-t p-5">
       <h2 className="text-3xl font-bold">Users</h2>
-      <div id='contains' className="flex overflow-x-scroll">
+      <div className="flex overflow-x-scroll">
         {users.map((user: any) => {
           return (
             <UserDisplay
