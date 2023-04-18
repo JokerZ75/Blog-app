@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 8008;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });

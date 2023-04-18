@@ -5,7 +5,7 @@ interface BlogProps {
 
 const blog = ({ Title, description }: BlogProps) => {
   return (
-    <div className="md:grid md:grid-cols-2 md:grid-rows-3 md:gap-2 flex flex-col bg-slate-400 dark:bg-slate-800 mx-10 my-5 p-3 rounded-lg overflow-hidden">
+    <div className="md:grid md:grid-cols-2 md:grid-rows-3 md:gap-2 flex flex-col duration-500 bg-slate-400 dark:bg-slate-800 mx-10 my-5 p-3 rounded-lg overflow-hidden">
       <div className="md:row-span-3 md:flex dark:bg-slate-700 bg-slate-300 rounded mb-2 md:mb-0 md:justify-center md:items-center ">
         <h1 className="text-4xl font-bold text-center p-5 mb-2 rounded">
           {Title}

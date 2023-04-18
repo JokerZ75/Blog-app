@@ -11,6 +11,19 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/displayInfo").get((req, res) => {
+  User.find()
+    .then((users) =>
+      res.json(
+        users.map((user) => ({
+          username: user.username,
+          profileImage: user.profileImage,
+        }))
+      )
+    )
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/byid/:id").get((req, res) => {
   User.findById(req.params.id)
     .then((users) => res.json(users))

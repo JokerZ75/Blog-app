@@ -7,7 +7,7 @@ const userSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Image',
         required: true,
-        default: '64388d4e76c30ebc326ec27c'
+        default: '64389336dc90e8c795be74f7'
     },
     username: {
         type: String,
