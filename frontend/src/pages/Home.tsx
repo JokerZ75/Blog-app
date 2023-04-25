@@ -3,7 +3,7 @@ import CreateBlog from "../components/ui/button";
 import Blog from "../components/Blog";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import SearchArea from '../components/search';
+import SearchArea from '../components/ui/search';
 
 const Home = () => {
   return (

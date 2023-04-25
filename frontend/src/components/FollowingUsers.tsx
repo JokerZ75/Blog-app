@@ -35,7 +35,7 @@ const followedUsers = () => {
   }, []);
 
   return (
-    <div className="bg-slate-300 dark:bg-slate-800 m-5 rounded-t p-5">
+    <div className="bg-slate-300 dark:bg-slate-800 m-5 mb-0 rounded-t p-5">
       <h2 className="text-3xl font-bold">Users</h2>
       <div className="flex overflow-x-scroll">
         {users.map((user: any) => {

@@ -1,13 +1,12 @@
 import Layout from "../layouts/layout";
 import FollowingUsers from "../components/FollowingUsers";
+import FollowingBlogs from "../components/FollowingBlogs";
 
 const following = () => {
   return (
     <Layout>
       <FollowingUsers />
-      <div>
-        <h1>Blogs</h1>
-      </div>
+      <FollowingBlogs />
     </Layout>
   );
 };
