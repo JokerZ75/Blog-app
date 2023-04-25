@@ -1,7 +1,7 @@
 interface BlogProps {
   Title: string;
   description: string;
-  Author: string;
+  Author?: string;
 }
 
 const blog = ({ Title, description, Author }: BlogProps) => {
