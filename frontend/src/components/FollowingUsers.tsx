@@ -9,18 +9,7 @@ const followedUsers = () => {
     fetch("http://localhost:8008/users/displayInfo", { signal })
       .then((res) => res.json())
       .then((usersData) => {
-        usersData.forEach((user: any) => {
-          fetch(`http://localhost:8008/images/byid/${user.profileImage}`, {
-            signal,
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              setUsers((users: any) => [
-                ...users,
-                { ...user, profileImage: data.base64Data },
-              ]);
-            });
-        });
+        setUsers(usersData);
       })
       .catch((err) => {
         if (err.name === "AbortError") {
@@ -43,7 +32,7 @@ const followedUsers = () => {
             <UserDisplay
               key={user.username}
               username={user.username}
-              image={"data:image/jpeg;base64," + user.profileImage}
+              image={user.profileImage}
             />
           );
         })}
